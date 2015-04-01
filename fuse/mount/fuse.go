@@ -24,7 +24,7 @@ type mount struct {
 // Mount mounts a fuse fs.FS at a given location, and returns a Mount instance.
 // parent is a ContextGroup to bind the mount's ContextGroup to.
 func NewMount(p ctxgroup.ContextGroup, fsys fs.FS, mountpoint string) (Mount, error) {
-	conn, err := fuse.Mount(mountpoint)
+	conn, err := fuse.Mount(mountpoint, fuse.AllowOther())
 	if err != nil {
 		return nil, err
 	}
