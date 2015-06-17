@@ -95,6 +95,12 @@ test_object_cmd() {
 		test_cmp expected_putBrokenErr actual_putBrokenErr
 	'
 
+	test_expect_success "'echo \{\} | ipfs object put' should create empty object" '
+	    echo \{\} | ipfs object put > empty_put_actual
+	    echo added QmdfTbBqBPQ7VNxZEYEj14VmRuZBkqFbiwReogJgS1zR1n > empty_put_expected
+		test_cmp empty_put_expected empty_put_actual
+	'
+
 	test_expect_success "'ipfs object patch' should work" '
 		EMPTY_DIR=$(ipfs object new unixfs-dir) &&
 		OUTPUT=$(ipfs object patch $EMPTY_DIR add-link foo $EMPTY_DIR)
