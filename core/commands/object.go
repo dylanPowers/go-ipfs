@@ -651,9 +651,9 @@ func objectPut(n *core.IpfsNode, input io.Reader, encoding string) (*Object, err
 
 		// check that we have data in the Node to add
 		// otherwise we will add the empty object without raising an error
-		if node.Data == "" && len(node.Links) == 0 {
-			return nil, ErrEmptyNode
-		}
+//		if node.Data == "" && len(node.Links) == 0 {
+//			return nil, ErrEmptyNode
+//		}
 
 		dagnode, err = deserializeNode(node)
 		if err != nil {
